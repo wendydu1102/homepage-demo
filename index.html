@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>China Grid Planning Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">China Grid Planning Research</div>
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#">Visualizations</a>
+            <a href="#">Reports</a>
+            <a href="#">Models & Data</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Reaching Carbon Neutrality in China</h1>
+            <p>Examining temporal and subnational limits to renewable energy deployment through comprehensive capacity
+                expansion modeling of China's electricity grid pathways to 2060.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary">Explore Visualizations</button>
+                <button class="btn-secondary">View Reports</button>
+            </div>
+        </div>
+
+        <div class="hero-visualization">
+            <div class="viz-card">
+                <div class="viz-carousel">
+
+                    <!-- Scene 1: Reliability -->
+                    <div class="viz-scene active" id="scene-0">
+                        <div class="scene-layout s1-layout">
+                            <!-- Wind Turbine Abstract -->
+                            <div class="turbine">
+                                <div class="turbine-base"></div>
+                                <div class="blades-container">
+                                    <div class="blade b-1"></div>
+                                    <div class="blade b-2"></div>
+                                    <div class="blade b-3"></div>
+                                    <div class="hub"></div>
+                                </div>
+                            </div>
+                            <!-- Power Flow with Interruption -->
+                            <div class="power-line">
+                                <div class="energy-packet e-1"></div>
+                                <div class="energy-packet e-2 warning-packet"></div>
+                                <div class="energy-packet e-3"></div>
+                            </div>
+                            <!-- City Node & Downfall -->
+                            <div class="city-node">
+                                <div class="building"></div>
+                                <div class="building tall"></div>
+                                <div class="building dark"></div>
+                                <div class="alert-beacon"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scene 2: Targets -->
+                    <div class="viz-scene" id="scene-1">
+                        <div class="scene-layout s2-layout">
+                            <!-- Massive Chart Growth -->
+                            <div class="bar-group">
+                                <div class="bar-track">
+                                    <div class="bar-fill old-target"></div>
+                                </div>
+                                <div class="bar-track highlight">
+                                    <div class="bar-fill new-target"></div>
+                                </div>
+                            </div>
+                            <!-- Shift to generation share pie -->
+                            <div class="pie-container">
+                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <path class="circle-bg"
+                                        d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="circle-fill" stroke-dasharray="56, 100"
+                                        d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <div class="pie-center"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scene 3: Temporal Bottleneck -->
+                    <div class="viz-scene" id="scene-2">
+                        <div class="scene-layout s3-layout">
+                            <!-- Pressure Timeline -->
+                            <div class="timeline-nodes">
+                                <div class="t-node past"></div>
+                                <div class="t-node past"></div>
+                                <div class="t-node past"></div>
+                                <div class="t-node critical">
+                                    <div class="pressure-pulse p1"></div>
+                                    <div class="pressure-pulse p2"></div>
+                                </div>
+                            </div>
+                            <!-- Abstract Clock/Hourglass constraint -->
+                            <div class="hourglass-abstract">
+                                <div class="glass-top">
+                                    <div class="sand-draining"></div>
+                                </div>
+                                <div class="glass-neck"></div>
+                                <div class="glass-bottom">
+                                    <div class="sand-filling"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scene 4: Geographic Constraints -->
+                    <div class="viz-scene" id="scene-3">
+                        <div class="scene-layout s4-layout">
+                            <!-- Central Hub -->
+                            <div class="load-hub">
+                                <div class="hub-core"></div>
+                                <div class="hub-radius r-1"></div>
+                                <div class="hub-radius r-2"></div>
+                            </div>
+                            <!-- Distributed Solar Explosion -->
+                            <div class="solar-swarm" id="solar-swarm">
+                                <!-- Populated dynamically by app.js -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="viz-caption">
+                    <h3 id="caption-title">System Reliability & Resource Adequacy</h3>
+                    <p id="caption-desc">Offshore wind alone cannot guarantee reliability in the Southern Grid. The
+                        "2060 Gap" shows a 30% probability of power shortfalls during high-stress drought years due to
+                        internal transmission bottlenecks.</p>
+                </div>
+
+                <div class="viz-controls">
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="dots">
+                        <button class="viz-dot active" data-index="0" aria-label="Slide 1"></button>
+                        <button class="viz-dot" data-index="1" aria-label="Slide 2"></button>
+                        <button class="viz-dot" data-index="2" aria-label="Slide 3"></button>
+                        <button class="viz-dot" data-index="3" aria-label="Slide 4"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
