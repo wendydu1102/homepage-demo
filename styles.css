@@ -181,6 +181,7 @@ button {
 .dots {
     display: flex;
     gap: 0.5rem;
+    align-items: center;
     justify-content: center;
 }
 
@@ -190,6 +191,7 @@ button {
     border-radius: 50%;
     border: none;
     background: #cbd5e1;
+    cursor: pointer;
     transition: all 0.3s;
     padding: 0;
 }
@@ -198,6 +200,23 @@ button {
     width: 24px;
     border-radius: 4px;
     background: var(--primary-teal);
+}
+
+.pause-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2px;
+    margin-left: 2px;
+    transition: color 0.3s;
+}
+
+.pause-btn:hover {
+    color: var(--primary-teal);
 }
 
 /* ========================================= */
@@ -212,6 +231,13 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.viz-scene.active {
+    pointer-events: auto;
+    z-index: 1;
 }
 
 .scene-layout {
@@ -503,12 +529,11 @@ button {
 .timeline-nodes::before {
     content: '';
     position: absolute;
-    top: 50%;
+    top: calc(50% - 2px);
     left: 0;
     right: 0;
     height: 4px;
     background: #e2e8f0;
-    transform: translateY(-50%);
     z-index: 0;
 }
 
@@ -667,26 +692,37 @@ button {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1; /* Below hub and particles */
+    z-index: 1;
 }
 
 .china-map-path {
-    fill: none;
-    stroke: #e2e8f0;
-    stroke-width: 2;
-    stroke-dasharray: 6 6;
+    fill: #f8faf9;
+    stroke: #cbd5e1;
+    stroke-width: 1;
     opacity: 0;
     transition: opacity 1s ease;
 }
 
-.viz-scene.active .china-map-path {
-    opacity: 1;
-    animation: dashMap 20s linear infinite;
+.transmission-arc {
+    fill: none;
+    stroke: #b45309; /* warm brown/orange */
+    stroke-width: 2.5;
+    stroke-dasharray: 10 6;
+    opacity: 0;
 }
 
-@keyframes dashMap {
+.viz-scene.active .china-map-path,
+.viz-scene.active .transmission-arc {
+    opacity: 1;
+}
+
+.viz-scene.active .transmission-arc {
+    animation: flowArc 4s linear infinite;
+}
+
+@keyframes flowArc {
     to {
-        stroke-dashoffset: 100;
+        stroke-dashoffset: -100;
     }
 }
 
@@ -745,6 +781,7 @@ button {
     width: 100%;
     height: 100%;
     pointer-events: none;
+    z-index: 5;
 }
 
 .swarm-dot {
