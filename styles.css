@@ -1,0 +1,872 @@
+:root {
+    --primary-teal: #10b981;
+    --primary-hover: #059669;
+    --navy-text: #0f172a;
+    --gray-text: #475569;
+    --bg-gradient: linear-gradient(135deg, #fdfefe 0%, #f0fdf6 100%);
+    --card-bg: #ffffff;
+    --card-inner: #f8faf9;
+    --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+    --border-subtle: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--navy-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar & Typography (unchanged layout flow) */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+}
+
+.navbar .logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: var(--gray-text);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.navbar nav a.active {
+    color: var(--navy-text);
+    font-weight: 600;
+}
+
+.hero {
+    display: flex;
+    flex: 1;
+    padding: 4rem;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 500px;
+}
+
+.hero-content h1 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--gray-text);
+    margin-bottom: 2.5rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--primary-teal);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--navy-text);
+    border: 1.5px solid var(--navy-text);
+}
+
+/* Visualization Section */
+.hero-visualization {
+    flex: 1.2;
+    display: flex;
+    justify-content: center;
+}
+
+.viz-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-soft);
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border: 1px solid var(--border-subtle);
+}
+
+.viz-carousel {
+    background: var(--card-inner);
+    border-radius: 12px;
+    height: 320px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+}
+
+.viz-caption h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.viz-caption p {
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    line-height: 1.5;
+    min-height: 60px;
+}
+
+.viz-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.progress-track {
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 2px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary-teal);
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.dots {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.viz-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0;
+}
+
+.viz-dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: var(--primary-teal);
+}
+
+.pause-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2px;
+    margin-left: 2px;
+    transition: color 0.3s;
+}
+
+.pause-btn:hover {
+    color: var(--primary-teal);
+}
+
+/* ========================================= */
+/* Modern Abstract Scene Designs             */
+/* ========================================= */
+.viz-scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.viz-scene.active {
+    pointer-events: auto;
+    z-index: 1;
+}
+
+.scene-layout {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.viz-scene.active .scene-layout {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- Scene 1: Reliability --- */
+.s1-layout {
+    gap: 2rem;
+}
+
+.turbine {
+    position: relative;
+    width: 60px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.turbine-base {
+    width: 6px;
+    height: 60px;
+    background: #94a3b8;
+    border-radius: 3px;
+}
+
+.blades-container {
+    position: absolute;
+    top: 15px;
+    width: 60px;
+    height: 60px;
+}
+
+.viz-scene.active .blades-container {
+    animation: spinBlades 4s linear infinite;
+}
+
+.blade {
+    position: absolute;
+    top: 0;
+    left: 28px;
+    width: 4px;
+    height: 30px;
+    background: var(--primary-teal);
+    border-radius: 2px;
+    transform-origin: center bottom;
+}
+
+.b-1 {
+    transform: rotate(0deg);
+}
+
+.b-2 {
+    transform: rotate(120deg);
+}
+
+.b-3 {
+    transform: rotate(240deg);
+}
+
+.hub {
+    position: absolute;
+    top: 26px;
+    left: 26px;
+    width: 8px;
+    height: 8px;
+    background: var(--navy-text);
+    border-radius: 50%;
+}
+
+@keyframes spinBlades {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.power-line {
+    width: 120px;
+    height: 4px;
+    background: #e2e8f0;
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.energy-packet {
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 20px;
+    height: 100%;
+    background: var(--primary-teal);
+    border-radius: 2px;
+}
+
+.viz-scene.active .e-1 {
+    animation: flow 2s linear infinite;
+}
+
+.viz-scene.active .e-2 {
+    animation: flow 2s linear infinite 0.6s;
+    background: #ef4444;
+}
+
+/* Represents shortfall/risk */
+.viz-scene.active .e-3 {
+    animation: flow 2s linear infinite 1.2s;
+}
+
+@keyframes flow {
+    100% {
+        left: 100%;
+    }
+}
+
+.city-node {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 60px;
+}
+
+.building {
+    width: 16px;
+    height: 30px;
+    background: #94a3b8;
+    border-radius: 2px 2px 0 0;
+}
+
+.building.tall {
+    height: 50px;
+    background: #64748b;
+}
+
+.building.dark {
+    height: 40px;
+    background: var(--navy-text);
+}
+
+.alert-beacon {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: #ef4444;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ef4444;
+    opacity: 0;
+}
+
+.viz-scene.active .alert-beacon {
+    animation: flashBeacon 1s ease-in-out infinite alternate;
+}
+
+@keyframes flashBeacon {
+    to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.5);
+    }
+}
+
+/* --- Scene 2: Targets --- */
+.s2-layout {
+    gap: 4rem;
+}
+
+.bar-group {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    height: 120px;
+}
+
+.bar-track {
+    width: 30px;
+    height: 100%;
+    background: #e2e8f0;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+.bar-fill {
+    width: 100%;
+    background: #94a3b8;
+    border-radius: 4px;
+    transition: height 1s cubic-bezier(0, 0.55, 0.45, 1);
+    height: 0;
+}
+
+.viz-scene.active .old-target {
+    height: 40%;
+}
+
+.viz-scene.active .highlight .new-target {
+    background: var(--primary-teal);
+    height: 95%;
+    animation: targetSurge 1.5s forwards;
+}
+
+@keyframes targetSurge {
+    0% {
+        height: 40%;
+    }
+
+    100% {
+        height: 95%;
+    }
+}
+
+.pie-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circular-chart {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 250px;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #e2e8f0;
+    stroke-width: 3.8;
+}
+
+.circle-fill {
+    fill: none;
+    stroke: var(--primary-teal);
+    stroke-width: 3.8;
+    stroke-linecap: round;
+    stroke-dasharray: 0, 100;
+    transition: stroke-dasharray 1.5s ease;
+}
+
+.viz-scene.active .circle-fill {
+    stroke-dasharray: 56, 100;
+}
+
+.pie-center {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: var(--card-bg);
+    border-radius: 50%;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Scene 3: Temporal Bottleneck --- */
+.s3-layout {
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.timeline-nodes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    position: relative;
+}
+
+.timeline-nodes::before {
+    content: '';
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #e2e8f0;
+    z-index: 0;
+}
+
+.t-node {
+    position: relative;
+    z-index: 1;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #94a3b8;
+    border: 3px solid #fff;
+}
+
+.t-node.critical {
+    background: #ef4444;
+    transform: scale(1.2);
+}
+
+.pressure-pulse {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    border: 2px solid #ef4444;
+    opacity: 0;
+}
+
+.viz-scene.active .p1 {
+    animation: pulseOut 1.5s infinite;
+}
+
+.viz-scene.active .p2 {
+    animation: pulseOut 1.5s infinite 0.75s;
+}
+
+@keyframes pulseOut {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.hourglass-abstract {
+    width: 40px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.viz-scene.active .hourglass-abstract {
+    animation: rotateGlass 4s ease-in-out infinite;
+}
+
+.glass-top,
+.glass-bottom {
+    width: 40px;
+    height: 26px;
+    border: 3px solid var(--navy-text);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-neck {
+    width: 6px;
+    height: 8px;
+    background: var(--navy-text);
+}
+
+.sand-draining {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-teal);
+}
+
+.sand-filling {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0%;
+    background: var(--primary-teal);
+}
+
+.viz-scene.active .sand-draining {
+    animation: drain 2s linear infinite;
+}
+
+.viz-scene.active .sand-filling {
+    animation: fillUp 2s linear infinite;
+}
+
+@keyframes drain {
+    100% {
+        height: 0%;
+    }
+}
+
+@keyframes fillUp {
+    100% {
+        height: 100%;
+    }
+}
+
+@keyframes rotateGlass {
+
+    0%,
+    45% {
+        transform: rotate(0deg);
+    }
+
+    50%,
+    95% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- Scene 4: Geographic Constraints --- */
+.s4-layout {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.s4-map-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    /* Fallback if aspect-ratio not supported in very old browsers, but Inter and CSS vars are modern enough */
+}
+
+.china-map-outline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.china-map-path {
+    fill: #f8faf9;
+    stroke: #cbd5e1;
+    stroke-width: 1;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.transmission-arc {
+    fill: none;
+    stroke: #b45309; /* warm brown/orange */
+    stroke-width: 2.5;
+    stroke-dasharray: 10 6;
+    opacity: 0;
+}
+
+.viz-scene.active .china-map-path,
+.viz-scene.active .transmission-arc {
+    opacity: 1;
+}
+
+.viz-scene.active .transmission-arc {
+    animation: flowArc 4s linear infinite;
+}
+
+@keyframes flowArc {
+    to {
+        stroke-dashoffset: -100;
+    }
+}
+
+.load-hub {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.hub-core {
+    width: 24px;
+    height: 24px;
+    background: var(--navy-text);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(15, 23, 42, 0.4);
+}
+
+.hub-radius {
+    position: absolute;
+    border: 2px dashed #94a3b8;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.viz-scene.active .r-1 {
+    animation: radiusExpand 3s infinite;
+}
+
+.viz-scene.active .r-2 {
+    animation: radiusExpand 3s infinite 1.5s;
+}
+
+@keyframes radiusExpand {
+    0% {
+        width: 20px;
+        height: 20px;
+        opacity: 1;
+    }
+
+    100% {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+    }
+}
+
+.solar-swarm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.swarm-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--primary-teal);
+    border-radius: 2px;
+    transform: scale(0);
+    opacity: 0;
+    box-shadow: 0 0 4px rgba(16, 185, 129, 0.4);
+    transition: transform 0.1s linear, top 0.1s linear, left 0.1s linear;
+}
+
+.viz-scene.active .swarm-dot {
+    animation: dotPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes dotPop {
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        padding: 3rem 2rem;
+        gap: 2rem;
+    }
+
+    .hero-content,
+    .viz-card {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+    
+    .navbar nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .hero {
+        padding: 2rem 1.5rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+
+    .viz-carousel {
+        height: 280px;
+    }
+    
+    .viz-card {
+        padding: 1rem;
+    }
+    
+    .s4-map-container {
+        max-width: 320px;
+    }
+}
+/* Pause animations when hovering or clicked */
+.viz-carousel.is-paused * {
+    animation-play-state: paused !important;
+}

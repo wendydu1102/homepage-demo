@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Models & Data - China Grid Planning Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            },
+            corePlugins: {
+                preflight: false, // Prevent Tailwind from resetting our vanilla CSS
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">China Grid Planning Research</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">Visualizations</a>
+            <a href="#">Publications</a>
+            <a href="models-data.html" class="active">Models & Data</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="bg-white">
+            <div class="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-20">
+                <div class="flex flex-col gap-12">
+                    <div class="max-w-4xl">
+                        <h1 class="text-[#0f172a] mb-6">Models & Data</h1>
+                        <p class="text-gray-600 leading-relaxed text-lg">
+                            Open-source models, curated datasets, and reproducible outputs supporting
+                            China power-sector decarbonization research.
+                        </p>
+                    </div>
+
+                    <!-- Model Framework Diagram -->
+                    <div class="rounded-[28px] border border-gray-200 bg-[#f8fafc] px-7 py-8 md:px-10 md:py-10">
+                        <div class="max-w-3xl mb-10">
+                            <h2 class="text-[#0f172a] mb-3">Model Framework</h2>
+                            <p class="text-gray-600 leading-relaxed">
+                                Planning inputs flow through a least-cost optimization model, producing capacity,
+                                operations, and decarbonization pathway outputs.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col lg:flex-row lg:items-start gap-8">
+                            <!-- Inputs -->
+                            <div class="flex-1 min-w-[240px]">
+                                <div class="flex items-start gap-4 mb-5">
+                                    <div class="w-1.5 h-14 bg-[#10b981] rounded-full shrink-0"></div>
+                                    <div>
+                                        <p class="text-gray-500 uppercase tracking-[0.14em] text-sm mb-2">Inputs</p>
+                                        <h3 class="text-[#0f172a]">Parameters</h3>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Demand</span>
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Resource limits</span>
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Capex / opex</span>
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Emissions targets</span>
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Initial buildout</span>
+                                </div>
+                            </div>
+
+                            <div class="hidden lg:flex pt-16 text-gray-300">
+                                <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m13 6 6 6-6 6"></path>
+                                </svg>
+                            </div>
+
+                            <!-- Optimization -->
+                            <div class="flex-1 min-w-[240px]">
+                                <div class="flex items-start gap-4 mb-5">
+                                    <div class="w-1.5 h-14 bg-[#10b981] rounded-full shrink-0"></div>
+                                    <div>
+                                        <p class="text-gray-500 uppercase tracking-[0.14em] text-sm mb-2">Optimization</p>
+                                        <h3 class="text-[#0f172a]">Least-cost model</h3>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Land constraints</span>
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Grid balancing</span>
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Reserve needs</span>
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Storage operations</span>
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Transmission costs</span>
+                                </div>
+                            </div>
+
+                            <div class="hidden lg:flex pt-16 text-gray-300">
+                                <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m13 6 6 6-6 6"></path>
+                                </svg>
+                            </div>
+
+                            <!-- Outputs -->
+                            <div class="flex-1 min-w-[240px]">
+                                <div class="flex items-start gap-4 mb-5">
+                                    <div class="w-1.5 h-14 bg-[#10b981] rounded-full shrink-0"></div>
+                                    <div>
+                                        <p class="text-gray-500 uppercase tracking-[0.14em] text-sm mb-2">Outputs</p>
+                                        <h3 class="text-[#0f172a]">Pathway results</h3>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Capacity builds</span>
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Hourly dispatch</span>
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Transmission</span>
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Storage profiles</span>
+                                    <span class="rounded-full bg-white border border-gray-200 px-4 py-2 text-sm text-gray-600">Deployment rates</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <!-- Model 1 -->
+                        <div class="grid lg:grid-cols-[0.9fr_1.15fr] gap-10 py-12 border-t border-gray-200">
+                            <div>
+                                <div class="flex items-start gap-4 mb-6">
+                                    <div class="w-1.5 h-14 bg-[#10b981] rounded-full shrink-0"></div>
+                                    <div>
+                                        <p class="text-gray-500 uppercase tracking-[0.14em] text-sm mb-2">Model 1 · Snapshot</p>
+                                        <h2 class="text-[#0f172a]">Spatial Siting & Grid Planning</h2>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed mb-6 max-w-2xl">
+                                    A spatially resolved model for renewable siting, land-use limits, transmission planning, and long-term power-sector buildout.
+                                </p>
+                                <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+                                    <div class="flex items-center gap-3 text-gray-600">
+                                        <span class="w-2 h-2 rounded-full bg-[#10b981]"></span><span>Spatial siting</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-gray-600">
+                                        <span class="w-2 h-2 rounded-full bg-[#10b981]"></span><span>Land constraints</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-gray-600">
+                                        <span class="w-2 h-2 rounded-full bg-[#10b981]"></span><span>Transmission planning</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-gray-600">
+                                        <span class="w-2 h-2 rounded-full bg-[#10b981]"></span><span>2060 target</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="group rounded-2xl border border-gray-200 bg-white px-5 py-4 transition-all hover:border-[#10b981] hover:shadow-sm">
+                                    <div class="flex items-start justify-between gap-5">
+                                        <div>
+                                            <p class="text-gray-500 uppercase tracking-[0.12em] text-sm mb-2">Proceedings of the National Academy of Sciences · 2024</p>
+                                            <h3 class="text-[#0f172a] text-lg leading-snug">Spatially resolved land and grid model of carbon neutrality in China</h3>
+                                        </div>
+                                        <div class="flex items-center gap-3 shrink-0">
+                                            <a href="https://github.com/mrziheng/RESPO" target="_blank" rel="noopener noreferrer" class="text-[#0f172a] hover:text-[#10b981] transition-colors" aria-label="GitHub Repository">
+                                                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49v-1.72c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.99c.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.59.69.49A10.24 10.24 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" /></svg>
+                                            </a>
+                                            <a href="https://doi.org/10.6084/m9.figshare.25140842.v1" target="_blank" rel="noopener noreferrer" class="text-[#10b981] hover:text-[#059669] transition-colors" aria-label="Zenodo Dataset">
+                                                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3" /><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5" /><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" /></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Model 2 -->
+                        <div class="grid lg:grid-cols-[0.9fr_1.15fr] gap-10 py-12 border-t border-gray-200">
+                            <div>
+                                <div class="flex items-start gap-4 mb-6">
+                                    <div class="w-1.5 h-14 bg-[#10b981] rounded-full shrink-0"></div>
+                                    <div>
+                                        <p class="text-gray-500 uppercase tracking-[0.14em] text-sm mb-2">Model 2 · Pathways</p>
+                                        <h2 class="text-[#0f172a]">Capacity Expansion & Grid Operations</h2>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed mb-6 max-w-2xl">
+                                    A decade-linked planning framework that turns assumptions into capacity, dispatch, storage, transmission, and deployment-rate outputs.
+                                </p>
+                                <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+                                    <div class="flex items-center gap-3 text-gray-600">
+                                        <span class="w-2 h-2 rounded-full bg-[#10b981]"></span><span>Least-cost planning</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-gray-600">
+                                        <span class="w-2 h-2 rounded-full bg-[#10b981]"></span><span>Hourly operations</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-gray-600">
+                                        <span class="w-2 h-2 rounded-full bg-[#10b981]"></span><span>Storage profiles</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-gray-600">
+                                        <span class="w-2 h-2 rounded-full bg-[#10b981]"></span><span>Decade snapshots</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Citations (added extra visually) -->
+                                <div class="mt-8 flex flex-col gap-4" id="citations-container">
+                                    <button onclick="copyCitation('pathways')" class="text-left rounded-2xl border border-gray-200 bg-white px-6 py-5 transition-all hover:border-[#10b981] hover:shadow-sm" id="btn-pathways">
+                                        <p class="text-[#0f172a] font-semibold mb-1">Copy Citation: Advances in Applied Energy</p>
+                                        <p class="text-gray-500 text-sm" id="lbl-pathways">Click to copy citation and Zenodo DOI</p>
+                                    </button>
+                                    <button onclick="copyCitation('ndc')" class="text-left rounded-2xl border border-gray-200 bg-white px-6 py-5 transition-all hover:border-[#10b981] hover:shadow-sm" id="btn-ndc">
+                                        <p class="text-[#0f172a] font-semibold mb-1">Copy Citation: Cell Reports Sustainability</p>
+                                        <p class="text-gray-500 text-sm" id="lbl-ndc">Click to copy citation and Zenodo DOI</p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="group rounded-2xl border border-gray-200 bg-white px-5 py-4 transition-all hover:border-[#10b981] hover:shadow-sm">
+                                    <div class="flex items-start justify-between gap-5">
+                                        <div>
+                                            <p class="text-gray-500 uppercase tracking-[0.12em] text-sm mb-2">Advances in Applied Energy · 2025</p>
+                                            <h3 class="text-[#0f172a] text-lg leading-snug">Reaching Carbon Neutrality in China: Temporal and Subnational Limits to Renewable Energy Deployment</h3>
+                                        </div>
+                                        <div class="flex items-center gap-3 shrink-0">
+                                            <a href="https://github.com/Power-Lab/AdvAppliedEnergy_Pathways_2025" target="_blank" rel="noopener noreferrer" class="text-[#0f172a] hover:text-[#10b981] transition-colors" aria-label="GitHub Repository">
+                                                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49v-1.72c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.99c.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.59.69.49A10.24 10.24 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" /></svg>
+                                            </a>
+                                            <a href="https://zenodo.org/records/14907700" target="_blank" rel="noopener noreferrer" class="text-[#10b981] hover:text-[#059669] transition-colors" aria-label="Zenodo Dataset">
+                                                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3" /><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5" /><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" /></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="group rounded-2xl border border-gray-200 bg-white px-5 py-4 transition-all hover:border-[#10b981] hover:shadow-sm">
+                                    <div class="flex items-start justify-between gap-5">
+                                        <div>
+                                            <p class="text-gray-500 uppercase tracking-[0.12em] text-sm mb-2">Cell Reports Sustainability · 2025</p>
+                                            <h3 class="text-[#0f172a] text-lg leading-snug">Ratcheting up wind and solar targets for decarbonizing the power sector in China and beyond</h3>
+                                        </div>
+                                        <div class="flex items-center gap-3 shrink-0">
+                                            <a href="https://github.com/Power-Lab/CellReports_NDC_2025" target="_blank" rel="noopener noreferrer" class="text-[#0f172a] hover:text-[#10b981] transition-colors" aria-label="GitHub Repository">
+                                                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49v-1.72c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.99c.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.59.69.49A10.24 10.24 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" /></svg>
+                                            </a>
+                                            <a href="https://zenodo.org/records/15122725" target="_blank" rel="noopener noreferrer" class="text-[#10b981] hover:text-[#059669] transition-colors" aria-label="Zenodo Dataset">
+                                                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3" /><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5" /><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" /></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="group rounded-2xl border border-gray-200 bg-white px-5 py-4 transition-all hover:border-[#10b981] hover:shadow-sm">
+                                    <div class="flex items-start justify-between gap-5">
+                                        <div>
+                                            <p class="text-gray-500 uppercase tracking-[0.12em] text-sm mb-2">California-China Climate Institute · 2026 Working Paper</p>
+                                            <h3 class="text-[#0f172a] text-lg leading-snug">Offshore Wind Power and Resource Adequacy in the China Southern Grid</h3>
+                                        </div>
+                                        <div class="flex items-center gap-3 shrink-0">
+                                            <a href="https://www.law.berkeley.edu/wp-content/uploads/2026/03/Offshore-wind-Report-Feb-2026.pdf" target="_blank" rel="noopener noreferrer" class="text-[#10b981] hover:text-[#059669] transition-colors" aria-label="Download PDF">
+                                                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3" /><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5" /><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" /></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const citations = {
+            pathways: {
+                citation: 'Zhang, Z., Zhu, Z., Gordon, J. A., Lu, X., Zhang, D., & Davidson, M. R. (2025). Reaching carbon neutrality in China: Temporal and subnational limitations of renewable energy scale-up. Advances in Applied Energy, 20, 100238.',
+                doi: 'Zenodo DOI: 10.5281/zenodo.14907700',
+                defaultLabel: 'Click to copy citation and Zenodo DOI'
+            },
+            ndc: {
+                citation: 'Zhang, Z., Zhu, Z., Lu, X., Zhang, D., & Davidson, M. R. (2025). Ratcheting up wind and solar targets for decarbonizing the power sector in China and beyond. Cell Reports Sustainability, 2, 100389.',
+                doi: 'Zenodo DOI: 10.5281/zenodo.15122725',
+                defaultLabel: 'Click to copy citation and Zenodo DOI'
+            }
+        };
+
+        function copyCitation(key) {
+            const data = citations[key];
+            const text = `${data.citation}\n${data.doi}`;
+            const labelEl = document.getElementById(`lbl-${key}`);
+            
+            navigator.clipboard.writeText(text).then(() => {
+                labelEl.textContent = 'Copied!';
+                labelEl.classList.add('text-[#10b981]');
+                setTimeout(() => {
+                    labelEl.textContent = data.defaultLabel;
+                    labelEl.classList.remove('text-[#10b981]');
+                }, 1400);
+            }).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.setAttribute('readonly', 'true');
+                textarea.style.position = 'fixed';
+                textarea.style.left = '-9999px';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                labelEl.textContent = 'Copied!';
+                labelEl.classList.add('text-[#10b981]');
+                setTimeout(() => {
+                    labelEl.textContent = data.defaultLabel;
+                    labelEl.classList.remove('text-[#10b981]');
+                }, 1400);
+            });
+        }
+    </script>
+</body>
+</html>
